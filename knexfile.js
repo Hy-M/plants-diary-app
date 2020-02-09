@@ -1,4 +1,4 @@
-const { DB_URL } = process.ENV;
+const { DB_URL } = process.env;
 const ENV = process.env.NODE_ENV || 'development';
 
 const { username, password } = require('./db/credentials');
@@ -16,9 +16,16 @@ const baseConfig = {
 const customConfig = {
     development: {
         connection: {
-            database: 'plants-diary',
+            database: 'plants_diary',
             username: username,
             password: password
+        }
+    },
+    test: {
+        connection: {
+          database: 'plants_diary_test',
+          username: username,
+          password: password
         }
     },
     production: {
