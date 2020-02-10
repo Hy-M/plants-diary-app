@@ -5,6 +5,7 @@ const {
 
 const { formatDates } = require('../utils/utils');
 
+
   exports.seed = function(knex) {
     return knex.migrate
     .rollback()
@@ -15,6 +16,10 @@ const { formatDates } = require('../utils/utils');
     })
     .then(() => {
       return knex('wishlist').insert(wishlistData);
+    })
+    .then(() => {
+      console.log("Seeding");
+      
     })
   };
 
