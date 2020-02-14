@@ -17,9 +17,5 @@ const { formatDates } = require('../utils/utils');
     .then(() => {
       return knex('wishlist').insert(wishlistData);
     })
-    .then(() => {
-      console.log("Seeding");
-      
-    })
   };
 

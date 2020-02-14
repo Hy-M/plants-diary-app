@@ -1,6 +1,5 @@
 
 exports.up = function(knex) {
-  console.log("creating garden table");
   return knex.schema.createTable('garden', (gardenTable) => {
     gardenTable.increments('plant_id').primary();
     gardenTable.string('name').notNullable();
@@ -14,6 +13,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  console.log("dropping garden table");
   return knex.schema.dropTable('garden');
 };
