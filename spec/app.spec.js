@@ -43,6 +43,14 @@ describe("/api", () => {
           });
       });
     });
+    describe("DELETE", () => {
+      it.only("status: 200", () => {
+        return request
+          .delete("/api/garden")
+          .send({ plant_id: "2" })
+          .expect(200);
+      });
+    });
   });
   describe("/wishlist", () => {
     describe("GET", () => {

@@ -10,3 +10,10 @@ exports.addToGarden = plant => {
     .into("garden")
     .returning("*");
 };
+
+exports.removeFromGarden = ({ plant_id }) => {
+  return knex
+    .delete("*")
+    .from("garden")
+    .where("plant_id", plant_id);
+};
