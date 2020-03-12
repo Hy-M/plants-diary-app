@@ -1,7 +1,7 @@
 const { fetchWishlist, addToWishlist, removeFromWishlist } = require("../models/wishlist-model");
 
 exports.getWishlist = (req, res, next) => {
-  fetchWishlist()
+  fetchWishlist(req.body)
     .then(wishlist => {
       res.status(200).send({ wishlist });
     })

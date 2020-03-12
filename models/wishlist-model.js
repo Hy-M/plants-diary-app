@@ -1,7 +1,14 @@
 const knex = require("../db/connection");
 
-exports.fetchWishlist = () => {
-  return knex.select("*").from("wishlist");
+exports.fetchWishlist = ({ plant_id }) => {
+  if (plant_id) {
+    return knex
+      .select("*")
+      .from("wishlist")
+      .where("plant_id", plant_id);
+  } else {
+    return knex.select("*").from("wishlist");
+  }
 };
 
 exports.addToWishlist = plant => {

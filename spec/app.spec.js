@@ -16,6 +16,16 @@ beforeEach(function() {
 after(() => connection.destroy());
 
 describe("/api", () => {
+  describe("GET", () => {
+    it("status: 200 returns an object with all of the available endpoints", () => {
+      return request
+        .get("/api")
+        .expect(200)
+        .then(({ body }) => {
+          expect(body).to.haveOwnProperty("endpoints");
+        });
+    });
+  });
   describe("/garden", () => {
     describe("GET", () => {
       it("status: 200 returns an array with a key of garden", () => {
@@ -79,7 +89,7 @@ describe("/api", () => {
       });
     });
     describe("DELETE", () => {
-      it.only("status: 200", () => {
+      it("status: 200", () => {
         return request
           .delete("/api/wishlist")
           .send({ plant_id: "2" })

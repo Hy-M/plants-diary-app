@@ -1,0 +1,11 @@
+{
+  "/api GET": {
+    "description": "A JSON object with all of the available endpoints"
+  },
+  "/garden GET": {
+    "description": "An array of plant objects"
+  },
+  "/garden POST": {
+    "description": "Adds a plant to the garden database"
+  }
+}
