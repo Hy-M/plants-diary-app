@@ -1,11 +1,21 @@
 {
-  "/api GET": {
-    "description": "A JSON object with all of the available endpoints"
+  "/api": {
+    "GET": {
+      "description": "A JSON object with all of the available endpoints"
+    }
   },
-  "/garden GET": {
-    "description": "An array of plant objects"
-  },
-  "/garden POST": {
-    "description": "Adds a plant to the garden database"
+  "/garden": {
+    "GET": {
+      "description": "Gets all of the plants in the garden database",
+      "requestBody": "An object with a key of plant_id",
+      "response": "An array of plant objects on a key of garden",
+      "exampleResponse": { "garden": [] }
+    },
+    "POST": {
+      "description": "Adds a plant to the garden database",
+      "requestBody": "An object with a key of name and optional keys",
+      "response": "The newly added plant object",
+      "exampleResponse": { "plant": {} }
+    }
   }
 }
