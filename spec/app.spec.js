@@ -29,10 +29,24 @@ describe("/api", () => {
           });
       });
     });
+    describe("POST", () => {
+      it("status: 201 returns the newly posted plant", () => {
+        return request
+          .post("/api/garden")
+          .send({
+            name: "Dahlia",
+            date_sown: "2020-03-12",
+            notes: "Two tubers"
+          })
+          .then(({ body }) => {
+            expect(body).to.haveOwnProperty("plant");
+          });
+      });
+    });
   });
   describe("/wishlist", () => {
     describe("GET", () => {
-      it.only("status: 200 returns an array with a key of wishlist", () => {
+      it("status: 200 returns an array with a key of wishlist", () => {
         return request
           .get("/api/wishlist")
           .expect(200)
