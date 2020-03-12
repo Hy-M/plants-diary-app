@@ -44,7 +44,7 @@ describe("/api", () => {
       });
     });
     describe("DELETE", () => {
-      it.only("status: 200", () => {
+      it("status: 200", () => {
         return request
           .delete("/api/garden")
           .send({ plant_id: "2" })
@@ -64,6 +64,26 @@ describe("/api", () => {
             expect(body.wishlist[0]).to.haveOwnProperty("plant_id");
             expect(body.wishlist[0].is_growing).to.equal(false);
           });
+      });
+    });
+    describe("POST", () => {
+      it("status: 201 returns the newly posted plant", () => {
+        return request
+          .post("/api/wishlist")
+          .send({
+            name: "Lavender"
+          })
+          .then(({ body }) => {
+            expect(body).to.haveOwnProperty("plant");
+          });
+      });
+    });
+    describe("DELETE", () => {
+      it.only("status: 200", () => {
+        return request
+          .delete("/api/wishlist")
+          .send({ plant_id: "2" })
+          .expect(200);
       });
     });
   });
