@@ -17,3 +17,11 @@ exports.removeFromGarden = ({ plant_id }) => {
     .from("garden")
     .where("plant_id", plant_id);
 };
+
+exports.patchPlant = ({ plant_id }, reqBody) => {
+  return knex
+    .update(reqBody, ["notes", "id"])
+    .where("plant_id", plant_id)
+    .from("garden")
+    .returning("*");
+};
